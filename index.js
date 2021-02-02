@@ -23,7 +23,7 @@ var app = new Vue({
     }
   },
   mounted() {
-    setTimeout(() => this.isLoading = false, 3000);
+    setTimeout(() => (this.isLoading = false), 3000);
   },
   template: `
     <div>
@@ -40,9 +40,8 @@ var app = new Vue({
                 {{element.name}}</p>
               </div>
               <div class="flex items-center">
-                <button class="mx-2"
-                :class="{'animate-pulse' : isLoading}"
-                :color="element.isActive ? 'green' : 'red'" @click="editItem(element)">
+                <button class="btn mx-4 px-4 rounded"
+                :class="[{'animate-pulse' : isLoading},element.isActive ? 'bg-green-400' : 'bg-red-400']" @click="editItem(element)">
                   <span class="capitalize"
                 :class="{'animate-pulse' : isLoading}">Edit</span>
                 </button>
