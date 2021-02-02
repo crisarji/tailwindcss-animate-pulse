@@ -1,3 +1,3 @@
-# tailwindcss-n6xnwg
+# tailwindcss-animate-pulse
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/tailwindcss-n6xnwg)
+[Fork on StackBlitz ⚡️](https://stackblitz.com/edit/tailwindcss-animate-pulse?file=index.js)
