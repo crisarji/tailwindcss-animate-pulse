@@ -7,12 +7,21 @@ var app = new Vue({
   el: "#app",
   data: {
     name: "Example List!",
-    listElements: employees,
-    isLoading: true
+    fakeElements: [1, 2, 3, 4, 5]
+  },
+  props: {
+    listElements: {
+      type: Array,
+      default: () => [...employees]
+    },
+    isLoading: {
+      type: Boolean,
+      default: true
+    }
   },
   computed: {
     renderList() {
-      return this.isLoading ? [1, 2, 3, 4, 5] : this.listElements;
+      return this.isLoading ? this.fakeElements : this.listElements;
     }
   },
   methods: {
@@ -30,7 +39,8 @@ var app = new Vue({
       <h1>{{name}}</h1>
       <div class="w-screen bg-transparent flex items-center justify-around">
         <ul class="w-full max-w-md overflow-auto">
-          <li v-for="element in renderList" :key="element.id" class="p-4 mb-3 flex items-center justify-between bg-white shadow rounded-lg cursor-move">
+          <li v-for="element in renderList" :key="element.id" 
+          class="p-4 mb-3 flex items-center justify-between bg-white shadow rounded-lg cursor-move">
             <template>
               <div class="flex items-center">
                 <img class="w-10 h-10 rounded-full" :src="element.avatar" :alt="element.name"
@@ -41,9 +51,9 @@ var app = new Vue({
               </div>
               <div class="flex items-center">
                 <button class="btn mx-4 px-4 rounded"
-                :class="[{'animate-pulse' : isLoading},element.isActive ? 'bg-green-400' : 'bg-red-400']" @click="editItem(element)">
-                  <span class="capitalize"
-                :class="{'animate-pulse' : isLoading}">Edit</span>
+                :class="[{'animate-pulse w-12 h-6' : isLoading}, element.isActive ? 'bg-green-400' : 'bg-red-400']" 
+                @click="editItem(element)">
+                  <span class="capitalize text-white">{{isLoading ? '' : 'Edit'}}</span>
                 </button>
               </div>
             </template>
